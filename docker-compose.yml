@@ -2,7 +2,9 @@ version: "3"
 
 services:
   publisher:
-    build: ./docker/publisher
+    build:
+      context: ./publisher
+      dockerfile: ../docker/publisher/Dockerfile
     extends:
       file: ./docker-compose.base.yml
       service: app
