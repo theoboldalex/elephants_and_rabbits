@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+
+<?php
+
+use App\Command\MessagePublisherCommand;
+use Symfony\Component\Console\Application;
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Application(__DIR__);
+
+$messagePublisher = new MessagePublisherCommand();
+$app->add($messagePublisher);
+
+$app->run();
