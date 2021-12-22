@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  publisher:
+    build: ./docker/publisher
+    extends:
+      file: ./docker-compose.base.yml
+      service: app
+  consumer:
+    build: ./docker/consumer
+    extends:
+      file: ./docker-compose.base.yml
+      service: app
+  rabbitmq:
+    image: rabbitmq:3.8-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
