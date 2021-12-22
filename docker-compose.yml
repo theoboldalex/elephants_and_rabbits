@@ -5,14 +5,10 @@ services:
     build:
       context: ./publisher
       dockerfile: ../docker/publisher/Dockerfile
-    extends:
-      file: ./docker-compose.base.yml
-      service: app
   consumer:
-    build: ./docker/consumer
-    extends:
-      file: ./docker-compose.base.yml
-      service: app
+    build:
+      context: ./consumer
+      dockerfile: ../docker/consumer/Dockerfile
   rabbitmq:
     image: rabbitmq:3.8-management
     ports:

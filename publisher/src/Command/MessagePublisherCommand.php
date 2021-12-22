@@ -1,29 +1,48 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Command;
 
-use SykesCottages\Qu\Connector\Queue;
-use SykesCottages\Qu\Connector\RabbitMQ;
+use Exception;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class MessagePublisherCommand extends Command
 {
+    private const QUEUE_NAME = 'test';
+
     protected static $defaultName = 'message:publish';
 
     protected static $defaultDescription = 'Publish a message to the test queue';
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $rabbitMq = new RabbitMQ('rabbit-1', 5672, 'guest', 'guest');
+        try {
+            $conn = new AMQPStreamConnection(
+                'localhost',
+                '5672',
+                'guest',
+                'guest'
+            );
 
-        $rabbitMq->setQueueOptions(['blockingConsumer' => true]);
+            $channel = $conn->channel();
 
-        $testingQueue = new Queue('test', $rabbitMq);
+            $channel->queue_declare(self::QUEUE_NAME, false, false, false, false);
+            $msg = new AMQPMessage('Hello there!');
+            $channel->basic_publish($msg, '', self::QUEUE_NAME);
 
-        $testingQueue->queueMessage(['example' => rand(1, 10000)]);
+            $channel->close();
+            $conn->close();
 
-        return Command::SUCCESS;
+            echo '[x] Message added to ' . self::QUEUE_NAME . ' queue.' . PHP_EOL;
+            return Command::SUCCESS;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            return Command::FAILURE;
+        }
     }
 }
