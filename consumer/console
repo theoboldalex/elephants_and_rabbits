@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+
+<?php
+
+use App\Command\MessageConsumer;
+use Symfony\Component\Console\Application;
+
+require __DIR__ . '/vendor/autoload.php';
+
+$app = new Application(__DIR__);
+
+$consumer = new MessageConsumer();
+
+$app->add($consumer);
+
+$app->run();
