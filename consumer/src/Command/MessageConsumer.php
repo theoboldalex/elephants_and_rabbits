@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\Publisher;
 
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use Symfony\Component\Console\Command\Command;

@@ -1,14 +1,4 @@
-version: "3"
-
 services:
-  publisher:
-    build:
-      context: ./publisher
-      dockerfile: ../docker/publisher/Dockerfile
-  consumer:
-    build:
-      context: ./consumer
-      dockerfile: ../docker/consumer/Dockerfile
   rabbitmq:
     image: rabbitmq:3.8-management
     ports:
