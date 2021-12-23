@@ -18,10 +18,10 @@ class MessageConsumer extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $conn = new AMQPStreamConnection(
-            'localhost',
-            '5672',
-            'guest',
-            'guest',
+            getenv('RABBIT_HOST'),
+            getenv('RABBIT_PORT'),
+            getenv('RABBIT_USER'),
+            getenv('RABBIT_PASSWORD'),
         );
 
         $channel = $conn->channel();
