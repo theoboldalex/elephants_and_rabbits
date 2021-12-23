@@ -10,7 +10,7 @@ $ docker-compose up -d
 
 ### Consumer
 
-The consumer is built as a Symfony console application. To start this service, open up a terminal and navigate to the consumer dir before running
+The consumer is built as a Symfony console application. To start this service, open up a terminal and navigate to the consumer directory before running
 
 ```bash
 $ ./console queue:consume
