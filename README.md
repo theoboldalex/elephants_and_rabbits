@@ -19,10 +19,10 @@ $ ./console queue:consume
 ### Publisher
 
 The publisher is a Slim PHP application with one endpoint at `/sendMessage`.
-To start the service, you can simply start the built-in PHP webserver on a port of your choosing.
+To start the service, you can simply start the built-in PHP webserver on a port of your choosing. Navigate to the publisher directory and run
 
 ```bash
-$ php -S loclahost:8000
+$ php -S localhost:8000
 ```
 
 ### Publishing a message to the queue
