@@ -29,3 +29,14 @@ $ curl --request POST \
 	"message": "Hello, World!"
 }'
 ```
+
+If the request was successful, you should see the message output in the consumer's terminal. Furthermore, you can check for activity in the RabbitMQ management dashboard by navigating to
+`http://localhost:15672` and logging in with the `RABBIT_USER` and `RABBIT_PASSWORD` credentials set in our `docker-compose.base.yml` file.
+
+In order to clean up after running the application, stop your local PHP development server and run 
+
+```bash
+$ docker-compose down
+```
+
+All containers should now be stopped and removed.
