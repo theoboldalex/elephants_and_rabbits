@@ -2,7 +2,18 @@
 
 A simple example of a publisher and consumer written in PHP.
 
-In order to run the project locally; first, clone the repo and bring up the containers using the start script. 
+### Prerequisites
+
+In order to run the project locally you must have the following installed;
+
+ - PHP v5.4 or greater
+ - Docker
+ - Docker Compose
+ - Curl or another HTTP client of your choice.
+
+### Getting started
+
+Clone the repo and bring up the containers using the start script. 
 
 ```bash
 $ ./start.sh
