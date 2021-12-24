@@ -5,7 +5,7 @@ A simple example of a publisher and consumer written in PHP.
 In order to run the project locally; first, clone the repo and bring up the containers using the start script. 
 
 ```bash
-$ ./start
+$ ./start.sh
 ```
 
 ### Publisher
