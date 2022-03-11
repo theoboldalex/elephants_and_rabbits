@@ -11,11 +11,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 class MessageConsumer extends Command
 {
     private const QUEUE_NAME = 'test';
-
     private AMQPChannel $channel;
-
     protected static $defaultName = 'queue:consume';
-
     protected static $defaultDescription = 'consume the default queue';
 
     protected function execute(InputInterface $input, OutputInterface $output): int

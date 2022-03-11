@@ -12,9 +12,7 @@ use PhpAmqpLib\Message\AMQPMessage;
 class MessagePublisher
 {
     private const QUEUE_NAME = 'test';
-
     private AMQPStreamConnection $conn;
-
     private AMQPChannel $channel;
 
     public function sendMessage(array $message): void
