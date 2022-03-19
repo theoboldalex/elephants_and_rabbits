@@ -1,4 +1,3 @@
-hello from new branch
 # Elephants & Rabbits <img src="https://cdn.worldvectorlogo.com/logos/php-1.svg" width="50" height="25"> <img src="https://cdn.worldvectorlogo.com/logos/rabbitmq.svg" width="25" height="25">
 
 A simple example of a publisher and consumer written in PHP that interact via a RabbitMQ server.
