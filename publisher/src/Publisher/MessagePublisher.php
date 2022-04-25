@@ -20,9 +20,15 @@ class MessagePublisher
         try {
             $this->channel = $this->connect();
 
-            $this->channel->queue_declare(self::QUEUE_NAME, false, false, false, false);
+            $this->channel->queue_declare(
+                queue:       self::QUEUE_NAME,
+                auto_delete: false
+            );
             $msg = new AMQPMessage(json_encode($message));
-            $this->channel->basic_publish($msg, '', self::QUEUE_NAME);
+            $this->channel->basic_publish(
+                msg: $msg,
+                routing_key: self::QUEUE_NAME
+            );
 
             $this->closeConnection();
 

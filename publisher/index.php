@@ -15,8 +15,9 @@ $app->addErrorMiddleware(true, true, true);
 
 $app->post('/sendMessage', function (Request $request, Response $response, array $args) {
     $messageBody = $request->getParsedBody();
-    $publisher = new MessagePublisher();
+    $publisher   = new MessagePublisher();
     $publisher->sendMessage($messageBody);
+
     return $response;
 });
 
