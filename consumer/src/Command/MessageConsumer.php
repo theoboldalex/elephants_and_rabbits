@@ -44,7 +44,7 @@ class MessageConsumer extends Command
 
         $channel = $conn->channel();
         $channel->queue_declare(
-            queue:self::QUEUE_NAME,
+            queue: self::QUEUE_NAME,
             auto_delete: false
         );
         return $channel;
