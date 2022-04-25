@@ -26,7 +26,7 @@ class MessagePublisher
             );
             $msg = new AMQPMessage(json_encode($message));
             $this->channel->basic_publish(
-                msg: $msg,
+                msg:         $msg,
                 routing_key: self::QUEUE_NAME
             );
 
