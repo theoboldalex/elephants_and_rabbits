@@ -12,7 +12,7 @@ class MessageConsumer extends Command
 {
     private const QUEUE_NAME = 'test';
     private AMQPChannel $channel;
-    protected static $defaultName = 'queue:consume';
+    protected static $defaultName        = 'queue:consume';
     protected static $defaultDescription = 'consume the default queue';
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -44,9 +44,10 @@ class MessageConsumer extends Command
 
         $channel = $conn->channel();
         $channel->queue_declare(
-            queue: self::QUEUE_NAME,
+            queue:       self::QUEUE_NAME,
             auto_delete: false
         );
+
         return $channel;
     }
 
@@ -55,13 +56,13 @@ class MessageConsumer extends Command
      */
     private function consume(): void
     {
-        $callback = function ($msg) {
+        $callback = function ($msg): void {
             echo ' [x] Received ', $msg->body, "\n";
         };
 
         $this->channel->basic_consume(
-            queue: self::QUEUE_NAME,
-            no_ack: true,
+            queue:    self::QUEUE_NAME,
+            no_ack:   true,
             callback: $callback
         );
     }
