@@ -43,7 +43,10 @@ class MessageConsumer extends Command
         );
 
         $channel = $conn->channel();
-        $channel->queue_declare(self::QUEUE_NAME, false, false, false, false);
+        $channel->queue_declare(
+            queue:self::QUEUE_NAME,
+            auto_delete: false
+        );
         return $channel;
     }
 
@@ -57,13 +60,9 @@ class MessageConsumer extends Command
         };
 
         $this->channel->basic_consume(
-            self::QUEUE_NAME,
-            '',
-            false,
-            true,
-            false,
-            false,
-            $callback
+            queue: self::QUEUE_NAME,
+            no_ack: true,
+            callback: $callback
         );
     }
 }
